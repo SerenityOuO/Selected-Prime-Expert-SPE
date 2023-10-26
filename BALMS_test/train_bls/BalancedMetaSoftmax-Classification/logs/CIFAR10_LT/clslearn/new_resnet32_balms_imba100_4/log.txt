@@ -1,0 +1,192 @@
+Phase: train
+Do shuffle??? ---  False
+Unnormalized Sample Prob: class0=0.498, class1=0.498, class2=0.502, class3=0.502, class4=0.498, class5=0.498, class6=0.502, class7=0.502, class8=0.502, class9=0.502, 
+Max Mem: 637M
+Epoch: [1/84] Step:     0  Minibatch_loss_performance: 1.757 Minibatch_accuracy_micro: 0.125
+Unnormalized Sample Prob: class0=0.475, class1=0.503, class2=0.506, class3=0.517, class4=0.502, class5=0.515, class6=0.527, class7=0.524, class8=0.522, class9=0.521, 
+Max Mem: 645M
+Epoch: [1/84] Step:    10  Minibatch_loss_performance: 0.536 Minibatch_accuracy_micro: 0.840
+Unnormalized Sample Prob: class0=0.457, class1=0.497, class2=0.512, class3=0.526, class4=0.517, class5=0.526, class6=0.541, class7=0.544, class8=0.541, class9=0.541, 
+Max Mem: 645M
+Epoch: [1/84] Step:    20  Minibatch_loss_performance: 0.358 Minibatch_accuracy_micro: 0.850
+
+ Training acc Top1: 0.760 
+ Many_top1: 0.601 Median_top1: 0.174 Low_top1: 0.000 
+
+Phase: val
+
+
+ Phase: val 
+
+ Evaluation_accuracy_micro_top1: 0.704 
+ Averaged F-measure: 0.663 
+ Many_shot_accuracy_top1: 0.835 Median_shot_accuracy_top1: 0.179 Low_shot_accuracy_top1: 0.000 
+
+Unnormalized Sample Prob: class0=0.450, class1=0.494, class2=0.512, class3=0.532, class4=0.523, class5=0.528, class6=0.544, class7=0.549, class8=0.549, class9=0.549, 
+Max Mem: 645M
+Epoch: [2/84] Step:     0  Minibatch_loss_performance: 0.433 Minibatch_accuracy_micro: 0.832
+Unnormalized Sample Prob: class0=0.434, class1=0.485, class2=0.508, class3=0.539, class4=0.540, class5=0.541, class6=0.552, class7=0.557, class8=0.567, class9=0.571, 
+Max Mem: 646M
+Epoch: [2/84] Step:    10  Minibatch_loss_performance: 0.461 Minibatch_accuracy_micro: 0.828
+Unnormalized Sample Prob: class0=0.420, class1=0.478, class2=0.500, class3=0.549, class4=0.554, class5=0.552, class6=0.559, class7=0.561, class8=0.582, class9=0.591, 
+Max Mem: 646M
+Epoch: [2/84] Step:    20  Minibatch_loss_performance: 0.438 Minibatch_accuracy_micro: 0.824
+
+ Training acc Top1: 0.823 
+ Many_top1: 0.758 Median_top1: 0.457 Low_top1: 0.000 
+
+Phase: val
+
+
+ Phase: val 
+
+ Evaluation_accuracy_micro_top1: 0.813 
+ Averaged F-measure: 0.812 
+ Many_shot_accuracy_top1: 0.831 Median_shot_accuracy_top1: 0.740 Low_shot_accuracy_top1: 0.000 
+
+Unnormalized Sample Prob: class0=0.415, class1=0.475, class2=0.497, class3=0.552, class4=0.559, class5=0.556, class6=0.561, class7=0.563, class8=0.587, class9=0.598, 
+Max Mem: 646M
+Epoch: [3/84] Step:     0  Minibatch_loss_performance: 0.395 Minibatch_accuracy_micro: 0.816
+Unnormalized Sample Prob: class0=0.405, class1=0.468, class2=0.482, class3=0.562, class4=0.572, class5=0.565, class6=0.569, class7=0.569, class8=0.597, class9=0.610, 
+Max Mem: 646M
+Epoch: [3/84] Step:    10  Minibatch_loss_performance: 0.384 Minibatch_accuracy_micro: 0.793
+Unnormalized Sample Prob: class0=0.396, class1=0.460, class2=0.471, class3=0.567, class4=0.582, class5=0.575, class6=0.579, class7=0.577, class8=0.605, class9=0.618, 
+Max Mem: 646M
+Epoch: [3/84] Step:    20  Minibatch_loss_performance: 0.436 Minibatch_accuracy_micro: 0.783
+
+ Training acc Top1: 0.791 
+ Many_top1: 0.739 Median_top1: 0.737 Low_top1: 0.000 
+
+Phase: val
+
+
+ Phase: val 
+
+ Evaluation_accuracy_micro_top1: 0.823 
+ Averaged F-measure: 0.821 
+ Many_shot_accuracy_top1: 0.831 Median_shot_accuracy_top1: 0.791 Low_shot_accuracy_top1: 0.000 
+
+Unnormalized Sample Prob: class0=0.391, class1=0.457, class2=0.468, class3=0.568, class4=0.586, class5=0.580, class6=0.583, class7=0.580, class8=0.609, class9=0.621, 
+Max Mem: 646M
+Epoch: [4/84] Step:     0  Minibatch_loss_performance: 0.440 Minibatch_accuracy_micro: 0.766
+Unnormalized Sample Prob: class0=0.382, class1=0.450, class2=0.456, class3=0.571, class4=0.596, class5=0.592, class6=0.592, class7=0.587, class8=0.618, class9=0.627, 
+Max Mem: 646M
+Epoch: [4/84] Step:    10  Minibatch_loss_performance: 0.403 Minibatch_accuracy_micro: 0.783
+Unnormalized Sample Prob: class0=0.372, class1=0.442, class2=0.445, class3=0.571, class4=0.607, class5=0.603, class6=0.602, class7=0.595, class8=0.628, class9=0.635, 
+Max Mem: 646M
+Epoch: [4/84] Step:    20  Minibatch_loss_performance: 0.400 Minibatch_accuracy_micro: 0.789
+
+ Training acc Top1: 0.790 
+ Many_top1: 0.753 Median_top1: 0.699 Low_top1: 0.000 
+
+Phase: val
+
+
+ Phase: val 
+
+ Evaluation_accuracy_micro_top1: 0.826 
+ Averaged F-measure: 0.826 
+ Many_shot_accuracy_top1: 0.830 Median_shot_accuracy_top1: 0.812 Low_shot_accuracy_top1: 0.000 
+
+Unnormalized Sample Prob: class0=0.368, class1=0.438, class2=0.442, class3=0.570, class4=0.611, class5=0.608, class6=0.606, class7=0.599, class8=0.631, class9=0.638, 
+Max Mem: 646M
+Epoch: [5/84] Step:     0  Minibatch_loss_performance: 0.389 Minibatch_accuracy_micro: 0.785
+Unnormalized Sample Prob: class0=0.359, class1=0.428, class2=0.434, class3=0.569, class4=0.618, class5=0.620, class6=0.616, class7=0.609, class8=0.638, class9=0.645, 
+Max Mem: 646M
+Epoch: [5/84] Step:    10  Minibatch_loss_performance: 0.456 Minibatch_accuracy_micro: 0.764
+Unnormalized Sample Prob: class0=0.350, class1=0.417, class2=0.426, class3=0.569, class4=0.625, class5=0.632, class6=0.625, class7=0.617, class8=0.645, class9=0.653, 
+Max Mem: 646M
+Epoch: [5/84] Step:    20  Minibatch_loss_performance: 0.436 Minibatch_accuracy_micro: 0.795
+
+ Training acc Top1: 0.784 
+ Many_top1: 0.752 Median_top1: 0.779 Low_top1: 0.000 
+
+Phase: val
+
+
+ Phase: val 
+
+ Evaluation_accuracy_micro_top1: 0.827 
+ Averaged F-measure: 0.827 
+ Many_shot_accuracy_top1: 0.831 Median_shot_accuracy_top1: 0.810 Low_shot_accuracy_top1: 0.000 
+
+Unnormalized Sample Prob: class0=0.347, class1=0.412, class2=0.420, class3=0.566, class4=0.627, class5=0.638, class6=0.630, class7=0.621, class8=0.648, class9=0.657, 
+Max Mem: 646M
+Epoch: [6/84] Step:     0  Minibatch_loss_performance: 0.408 Minibatch_accuracy_micro: 0.816
+Unnormalized Sample Prob: class0=0.337, class1=0.400, class2=0.407, class3=0.567, class4=0.636, class5=0.647, class6=0.640, class7=0.632, class8=0.656, class9=0.666, 
+Max Mem: 646M
+Epoch: [6/84] Step:    10  Minibatch_loss_performance: 0.456 Minibatch_accuracy_micro: 0.758
+Unnormalized Sample Prob: class0=0.328, class1=0.390, class2=0.406, class3=0.563, class4=0.640, class5=0.657, class6=0.648, class7=0.642, class8=0.664, class9=0.674, 
+Max Mem: 646M
+Epoch: [6/84] Step:    20  Minibatch_loss_performance: 0.466 Minibatch_accuracy_micro: 0.789
+
+ Training acc Top1: 0.767 
+ Many_top1: 0.727 Median_top1: 0.770 Low_top1: 0.000 
+
+Phase: val
+
+
+ Phase: val 
+
+ Evaluation_accuracy_micro_top1: 0.835 
+ Averaged F-measure: 0.834 
+ Many_shot_accuracy_top1: 0.837 Median_shot_accuracy_top1: 0.825 Low_shot_accuracy_top1: 0.000 
+
+Unnormalized Sample Prob: class0=0.323, class1=0.385, class2=0.407, class3=0.559, class4=0.641, class5=0.663, class6=0.651, class7=0.646, class8=0.667, class9=0.677, 
+Max Mem: 646M
+Epoch: [7/84] Step:     0  Minibatch_loss_performance: 0.464 Minibatch_accuracy_micro: 0.783
+Unnormalized Sample Prob: class0=0.312, class1=0.374, class2=0.406, class3=0.555, class4=0.649, class5=0.673, class6=0.659, class7=0.654, class8=0.675, class9=0.685, 
+Max Mem: 646M
+Epoch: [7/84] Step:    10  Minibatch_loss_performance: 0.491 Minibatch_accuracy_micro: 0.791
+Unnormalized Sample Prob: class0=0.303, class1=0.361, class2=0.406, class3=0.554, class4=0.654, class5=0.679, class6=0.667, class7=0.663, class8=0.681, class9=0.692, 
+Max Mem: 646M
+Epoch: [7/84] Step:    20  Minibatch_loss_performance: 0.426 Minibatch_accuracy_micro: 0.758
+
+ Training acc Top1: 0.767 
+ Many_top1: 0.744 Median_top1: 0.809 Low_top1: 0.000 
+
+Phase: val
+
+
+ Phase: val 
+
+ Evaluation_accuracy_micro_top1: 0.832 
+ Averaged F-measure: 0.832 
+ Many_shot_accuracy_top1: 0.837 Median_shot_accuracy_top1: 0.812 Low_shot_accuracy_top1: 0.000 
+
+Unnormalized Sample Prob: class0=0.300, class1=0.357, class2=0.409, class3=0.551, class4=0.654, class5=0.683, class6=0.670, class7=0.667, class8=0.683, class9=0.695, 
+Max Mem: 646M
+Epoch: [8/84] Step:     0  Minibatch_loss_performance: 0.414 Minibatch_accuracy_micro: 0.797
+Unnormalized Sample Prob: class0=0.290, class1=0.345, class2=0.408, class3=0.548, class4=0.655, class5=0.693, class6=0.677, class7=0.677, class8=0.691, class9=0.701, 
+Max Mem: 646M
+Epoch: [8/84] Step:    10  Minibatch_loss_performance: 0.469 Minibatch_accuracy_micro: 0.752
+Unnormalized Sample Prob: class0=0.283, class1=0.335, class2=0.403, class3=0.548, class4=0.656, class5=0.698, class6=0.683, class7=0.688, class8=0.697, class9=0.707, 
+Max Mem: 646M
+Epoch: [8/84] Step:    20  Minibatch_loss_performance: 0.511 Minibatch_accuracy_micro: 0.721
+
+ Training acc Top1: 0.763 
+ Many_top1: 0.741 Median_top1: 0.795 Low_top1: 0.000 
+
+Phase: val
+
+
+ Phase: val 
+
+ Evaluation_accuracy_micro_top1: 0.834 
+ Averaged F-measure: 0.833 
+ Many_shot_accuracy_top1: 0.831 Median_shot_accuracy_top1: 0.845 Low_shot_accuracy_top1: 0.000 
+
+Unnormalized Sample Prob: class0=0.280, class1=0.331, class2=0.400, class3=0.548, class4=0.657, class5=0.699, class6=0.685, class7=0.691, class8=0.698, class9=0.709, 
+Max Mem: 646M
+Epoch: [9/84] Step:     0  Minibatch_loss_performance: 0.433 Minibatch_accuracy_micro: 0.748
+Unnormalized Sample Prob: class0=0.274, class1=0.322, class2=0.390, class3=0.550, class4=0.658, class5=0.705, class6=0.691, class7=0.700, class8=0.703, class9=0.715, 
+Max Mem: 646M
+Epoch: [9/84] Step:    10  Minibatch_loss_performance: 0.558 Minibatch_accuracy_micro: 0.701
+Unnormalized Sample Prob: class0=0.267, class1=0.314, class2=0.381, class3=0.553, class4=0.657, class5=0.708, class6=0.698, class7=0.709, class8=0.708, class9=0.719, 
+Max Mem: 646M
+Epoch: [9/84] Step:    20  Minibatch_loss_performance: 0.540 Minibatch_accuracy_micro: 0.760
+
+ Training acc Top1: 0.754 
+ Many_top1: 0.737 Median_top1: 0.758 Low_top1: 0.000 
+
+Phase: val
