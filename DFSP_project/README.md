@@ -14,6 +14,15 @@ If you already have setup the datasets, you can use symlink and ensure the follo
 `data/<dataset>` where `<datasets> = {'mit-states', 'ut-zappos', 'cgqa'}`.
 
 
+
+## Challenge
+The goal of this paper is to conduct experiments on the CZSL dataset to predict the attributes of an object given its known situation. By integrating the expert1 and expert2 models, we aim to reduce the Uncertainty Calibration Error (UCE) of the model and improve its accuracy.
+
+In this study, we also used different evaluation metrics to test the performance of the model and demonstrated that integrating expert1 and expert2 can achieve better performance on the CZSL dataset by comparing different model configurations with different integration methods.
+
+
+
+
 ## Setup
 ```
 conda create --name clip python=3.7
@@ -28,12 +37,6 @@ We experiment with three datasets: MIT-States, UT-Zappos, and C-GQA.
 ```
 sh download_data.sh
 ```
-
-## Challenge
-The goal of this paper is to conduct experiments on the CZSL dataset to predict the attributes of an object given its known situation. By integrating the expert1 and expert2 models, we aim to reduce the Uncertainty Calibration Error (UCE) of the model and improve its accuracy.
-
-In this study, we also used different evaluation metrics to test the performance of the model and demonstrated that integrating expert1 and expert2 can achieve better performance on the CZSL dataset by comparing different model configurations with different integration methods.
-
 
 
 ## Training
