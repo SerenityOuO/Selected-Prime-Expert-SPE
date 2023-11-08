@@ -82,7 +82,6 @@ To run, just edit the open-world parameter in `config1_<dataset>.yml`
 
     
 ## References
-If you use this code, please cite
 ```
 @article{lu2022decomposed,
   title={Decomposed Soft Prompt Guided Fusion Enhancing for Compositional Zero-Shot Learning},
