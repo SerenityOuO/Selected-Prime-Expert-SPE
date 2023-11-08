@@ -1,0 +1,3 @@
+使用這個安裝clip https://github.com/openai/CLIP
+
+pip install git+https://github.com/openai/CLIP.git
