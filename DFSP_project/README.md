@@ -2,6 +2,18 @@
 DFSP is a model which decomposes the prompt language feature into state feature and object feature, then fuses them with image feature to improve the response for state and object respectively.
 
 
+## block diagram
+-baseline model
+<img src="readme_/baseline model.png" alt="drawing" width="900"/>
+
+-Our Model linear projection Architecture
+<img src="readme_/Our Model linear projection Architecture.png" alt="drawing" width="900"/>
+
+
+If you already have setup the datasets, you can use symlink and ensure the following paths exist:
+`data/<dataset>` where `<datasets> = {'mit-states', 'ut-zappos', 'cgqa'}`.
+
+
 ## Setup
 ```
 conda create --name clip python=3.7
@@ -23,16 +35,6 @@ The goal of this paper is to conduct experiments on the CZSL dataset to predict 
 In this study, we also used different evaluation metrics to test the performance of the model and demonstrated that integrating expert1 and expert2 can achieve better performance on the CZSL dataset by comparing different model configurations with different integration methods.
 
 
-## block diagram
--baseline model
-<img src="readme_/baseline model.png" alt="drawing" width="900"/>
-
--Our Model linear projection Architecture
-<img src="readme_/Our Model linear projection Architecture.png" alt="drawing" width="900"/>
-
-
-If you already have setup the datasets, you can use symlink and ensure the following paths exist:
-`data/<dataset>` where `<datasets> = {'mit-states', 'ut-zappos', 'cgqa'}`.
 
 ## Training
 ```
