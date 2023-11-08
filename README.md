@@ -4,7 +4,7 @@ We present our code on CZSL Dataset and Ensemble Learning Dataset in two folder.
 
 ## Dataset
 
-[**CZSL Dataset**](https://github.com/SerenityOuO/DFSP_project) |  [**Ensemble Learning Dataset**](https://github.com/SerenityOuO/test-ensemble-learning)
+[**CZSL Dataset**](https://github.com/SerenityOuO/Selection-of-Predictions-SoP/tree/main/DFSP_project) |  [**Ensemble Learning Dataset**](https://github.com/SerenityOuO/Selection-of-Predictions-SoP/tree/main/test-ensemble-learning)
 :-------------------------:|:-------------------------:
 <img src="img/CZSL.jpg" alt="drawing" width="400"/> |  <img src="img/Ensemble Learning.jpg" alt="drawing" width="400"/>
 
@@ -13,13 +13,13 @@ This study delves into the optimal combination of these models, focusing on thei
 
 ## Model architecture
 
-- ** SoP :**
+-  SoP :
 <img src="img/SoP.png" alt="drawing" width="900"/>
 
-- ** ERV-SoP :**
+-  ERV-SoP :
 <img src="img/ERV-SoP.png" alt="drawing" width="900"/>
 
-- ** Mix SoP :**
+-  Mix SoP :
 <img src="img/Mix SoP.png" alt="drawing" width="900"/>
 
 
