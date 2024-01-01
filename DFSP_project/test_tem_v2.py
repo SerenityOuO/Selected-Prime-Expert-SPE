@@ -752,9 +752,9 @@ def choose_best_three_expert_new(probs_expert1,probs_expert2,probs_expert3 ,targ
     POE_acc =accuracy(POE_final_predictions,targets)
     SOE_acc =accuracy(SOE_final_predictions,targets)
     SPE_acc =accuracy(final_predictions,targets)
-    
+
 #     print("POE_SPE_acc: ",POE_acc,"SOE_SPE_acc: ",SOE_acc)
-      
+
 
 
     def cal_std_acc(error_rates, SOE_pred, final_predictions, targets):
@@ -809,12 +809,11 @@ def choose_best_three_expert_new(probs_expert1,probs_expert2,probs_expert3 ,targ
 #             print(f"Using a_value: {a_value:.2f}, ERV-SoP Accuracy: {acc:.4f}")
 
         print("acc_list:---------------- ",acc_list)
-
+        # --------更改BUG20231231
         if acc_list == []:
             ERV_SoP_acc = 0.0
         else:
             ERV_SoP_acc = acc_list[0]
-
         return ERV_SoP_acc
 #         print("Using the Threshold",a_value,"MOM acc: ",MOM_ACC)
         
@@ -831,7 +830,7 @@ def choose_best_three_expert_new(probs_expert1,probs_expert2,probs_expert3 ,targ
     else:
         ERV_SoP_acc = evaluate_with_thresholds(error_rates, SOE_pred, final_predictions, targets, global_a)
         cal_std_acc(error_rates, SOE_pred, final_predictions, targets)
-    
+
 #     print('global_a:', global_a)
     if ERV_SoP_acc == []:
         ERV_SoP_acc = 0.0
@@ -1033,7 +1032,6 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
     for i,obj_idx in zip(range(len(obj_idxs)),obj_idxs):
         attr_exp3 =  torch.cat([attr_exp3 ,all_logits[i,obj_idx].unsqueeze(0)], dim=0)
     S_attr_exp3 = F.softmax(attr_exp3, dim=1)
-    
     if config.MCDP:
         S_pair_exp2 = F.softmax(all_logits, dim=1)
     else:    
@@ -1126,7 +1124,7 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
             print(weight_ep1,weight_ep2,weight_ep3)
             
         #在test時載入val acc的數值 06/21
-    
+
 #     save_tensors(config.dataset + test_dataset.phase , yfs + config.train_look_up_table , "./feat/", S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
     #計算table準確度
     table_pred_ep12 = choose_best_expert_ex(S_attr_exp1, S_attr_exp2, all_attr_gt,test_dataset,val_uce_list_ep1,val_uce_list_ep2,weight_ep1,weight_ep2)
@@ -1782,6 +1780,7 @@ if __name__ == "__main__":
 
     dataset_path = config.dataset_path
     
+    print("use tem:",config.tem)
     print('loading train dataset')
     train_dataset_CL = CompositionDataset(dataset_path,
                                  phase='train',
@@ -1909,8 +1908,8 @@ if __name__ == "__main__":
                 all_logits_list, all_attr_gt_list, all_obj_gt_list, all_pair_gt_list, logits_attrs_list_list = [], [], [], [], []
 
                 for _ in range(n_iterations):
-                    all_logits__, all_attr_gt, all_obj_gt, all_pair_gt, logits_attrs_list_, loss_avg = predict_logits(model, val_dataset, config)
-                    all_logits_list.append(all_logits__)
+                    all_logits_, all_attr_gt, all_obj_gt, all_pair_gt, logits_attrs_list_, loss_avg = predict_logits(model, val_dataset, config)
+                    all_logits_list.append(all_logits_)
                     logits_attrs_list_list.append(logits_attrs_list_)
 
                 # Calculate the mean for each list of results
@@ -1923,9 +1922,14 @@ if __name__ == "__main__":
             else:    
                 all_logits, all_attr_gt, all_obj_gt, all_pair_gt,logits_attrs_list ,loss_avg = predict_logits(
                     model, val_dataset, config)
-            
+                print("use tem:",config.tem)
+                all_logits = (all_logits/float(config.tem))
+                
             all_logits_org, _, _, _,_ ,_ = predict_logits(
-                model_org, val_dataset, config)  
+                model_org, val_dataset, config) 
+            print("use tem:",config.tem)
+            all_logits_org = (all_logits_org/float(config.tem))
+            
             if config.open_world:
                 print('using threshold: ', best_th)
                 all_logits_ = threshold_with_feasibility(
@@ -1983,8 +1987,8 @@ if __name__ == "__main__":
             all_logits_list, all_attr_gt_list, all_obj_gt_list, all_pair_gt_list, logits_attrs_list_list = [], [], [], [], []
 
             for _ in range(n_iterations):
-                all_logits__, all_attr_gt, all_obj_gt, all_pair_gt, logits_attrs_list_, loss_avg = predict_logits(model, test_dataset, config)
-                all_logits_list.append(all_logits__)
+                all_logits_, all_attr_gt, all_obj_gt, all_pair_gt, logits_attrs_list_, loss_avg = predict_logits(model, test_dataset, config)
+                all_logits_list.append(all_logits_)
                 logits_attrs_list_list.append(logits_attrs_list_)
 
             # Calculate the mean for each list of results
@@ -1994,8 +1998,11 @@ if __name__ == "__main__":
         else:
             all_logits, all_attr_gt, all_obj_gt, all_pair_gt, logits_attrs_list,loss_avg = predict_logits(
                 model, test_dataset, config)
-            
-        all_logits_org, _, _, _,_ ,_ = predict_logits(model_org, test_dataset, config)  
+            print("use tem:",config.tem)
+            all_logits = (all_logits/float(config.tem))
+        print("use tem:",float(config.tem))
+        all_logits_org, _, _, _,_ ,_ = predict_logits(model_org, test_dataset, config) 
+        all_logits_org = (all_logits_org/float(config.tem))
         if config.open_world and best_th is not None:
             print('using threshold: ', best_th)
             all_logits_ = threshold_with_feasibility(
@@ -2062,9 +2069,9 @@ if __name__ == "__main__":
         
         
     if config.weighted:
-        root = config.load_model[:-2] +'weighted_'
+        root = config.load_model[:-2] +'weighted_'+str(config.tem)+'_'
     else:
-        root = config.load_model[:-2]
+        root = config.load_model[:-2] +str(config.tem)+'_'
     if config.open_world:
         if config.train_look_up_table == True:
             result_path = root +"train_uce_use_fs"+"open.calibrated.json"
@@ -2093,8 +2100,8 @@ if __name__ == "__main__":
 #     import ipdb 
 #     ipdb.set_trace()
 
-    with open('mit_state.json', 'w') as fp:
-        json.dump(results, fp, default=handle_special_values)
+#     with open('mit_state.json', 'w') as fp:
+#         json.dump(results, fp, default=handle_special_values)
 
         
     with open(result_path, 'w') as fp:

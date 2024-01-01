@@ -752,9 +752,9 @@ def choose_best_three_expert_new(probs_expert1,probs_expert2,probs_expert3 ,targ
     POE_acc =accuracy(POE_final_predictions,targets)
     SOE_acc =accuracy(SOE_final_predictions,targets)
     SPE_acc =accuracy(final_predictions,targets)
-    
+
 #     print("POE_SPE_acc: ",POE_acc,"SOE_SPE_acc: ",SOE_acc)
-      
+
 
 
     def cal_std_acc(error_rates, SOE_pred, final_predictions, targets):
@@ -831,7 +831,7 @@ def choose_best_three_expert_new(probs_expert1,probs_expert2,probs_expert3 ,targ
     else:
         ERV_SoP_acc = evaluate_with_thresholds(error_rates, SOE_pred, final_predictions, targets, global_a)
         cal_std_acc(error_rates, SOE_pred, final_predictions, targets)
-    
+
 #     print('global_a:', global_a)
     if ERV_SoP_acc == []:
         ERV_SoP_acc = 0.0
@@ -1053,7 +1053,7 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
     
     
     if test_dataset.phase == "val" and val_uce_list_ep1==[]:
-#         save_tensors(test_dataset.phase , config.train_look_up_table , "./feat/", S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
+        save_tensors(test_dataset.phase , config.train_look_up_table , "./MCDP_feat/", S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
         
         uce_expert1, bin_uncertainties_expert1, bin_errors_expert1, prop_in_bin_values_expert1,bin_n_samples_ep1, bin_variances_ep1 = compute_uce(S_attr_exp1, all_attr_gt)
 
@@ -1126,8 +1126,8 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
             print(weight_ep1,weight_ep2,weight_ep3)
             
         #在test時載入val acc的數值 06/21
-    
-#     save_tensors(config.dataset + test_dataset.phase , yfs + config.train_look_up_table , "./feat/", S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
+
+    save_tensors(config.dataset + test_dataset.phase , yfs + config.train_look_up_table , "./MCDP_feat/", S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
     #計算table準確度
     table_pred_ep12 = choose_best_expert_ex(S_attr_exp1, S_attr_exp2, all_attr_gt,test_dataset,val_uce_list_ep1,val_uce_list_ep2,weight_ep1,weight_ep2)
     table_acc_ep12 = accuracy(table_pred_ep12,all_attr_gt)
