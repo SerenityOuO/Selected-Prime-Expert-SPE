@@ -74,9 +74,9 @@ The feasibility similarities are saved at `data/feasibility_<dataset>.pt`.
 To run, just edit the open-world parameter in `config/<dataset>.yml`
 
 
-### MOM and ERV-SoP
+### SPE and HMOE 
 ```
-python -u test_v2.py --dataset config1_<dataset>
+python -u test_v4.py --dataset config1_<dataset>
 ```
 To run, just edit the open-world parameter in `config1_<dataset>.yml`
 

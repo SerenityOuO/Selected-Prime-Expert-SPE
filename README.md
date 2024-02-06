@@ -13,7 +13,7 @@ This study delves into the optimal combination of these models, focusing on thei
 
 ## Model architecture
 
--  SoP :
+-  SPE :
 <img src="img/SPE.jpg" alt="drawing" width="900"/>
 
 -  HMOE :
