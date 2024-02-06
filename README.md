@@ -9,7 +9,11 @@ We present our code on CZSL Dataset and Ensemble Learning Dataset in two folder.
 <img src="img/CZSL.jpg" alt="drawing" width="400"/> |  <img src="img/Ensemble Learning.jpg" alt="drawing" width="400"/>
 
 ## Abstract
-This study delves into the optimal combination of these models, focusing on their performances across varied datasets and scenarios.We propose a method named SoP (Selection of Prediction) by establishing a mapping table linking uncertainties to error rates for each model, which enables the selection of models with lower error rates. When faced with significant variances among models, our approach exhibits a performance edge over conventional ensemble learning techniques.Subsequently, we introduce an innovative hierarchical method named Mix of Experts of Mix of Experts (MoM), extending the conventional "Mix of Experts" paradigm across two tiers to refine prediction accuracy further, even for non-significant variance cases. In our experimental section, the methodology finds application in real-world datasets, specifically from Compositional Zero-Shot Learning and Ensemble Learning, underscoring its advantage in boosting performance.
+As machine learning technologies proliferate across various industries, scholars and experts continually seek methods to enhance prediction accuracy. Ensemble learning, a proven strategy, can effectively improve the predictive performance of models. The core idea is that the combined predictions of multiple models often surpass the capabilities of a single model. This research primarily focuses on: how to correctly integrate these models' predictions, especially considering the performance of each expert under different scenarios or data.
+
+This study introduces a new strategy: by mapping and analyzing the uncertainty and error rates of each model, a mapping table of uncertainty and error rates is constructed. Through each model's mapping table, we can more precisely identify which experts have greater confidence and accuracy under specific circumstances. This not only assists us in selecting and integrating the most confident predictions but also further enhances the overall predictive efficacy.
+
+This research conducts simulations on real datasets of Compositional Zero-Shot Learning(CZSL) and Ensemble Learning to verify how our method improves performance on these datasets.
 
 ## Model architecture
 
