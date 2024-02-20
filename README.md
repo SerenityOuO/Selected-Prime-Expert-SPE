@@ -1,4 +1,4 @@
-# Selection-of-Predictions
+# Selected Prime Expert(SPE)
 
 We present our code on CZSL Dataset and Ensemble Learning Dataset in two folder. Please go into the links below for more information.
 
