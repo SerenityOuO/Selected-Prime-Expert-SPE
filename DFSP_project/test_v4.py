@@ -690,6 +690,7 @@ def choose_best_three_expert_new(probs_expert1,probs_expert2,probs_expert3 ,targ
     global POE_pred
     global final_predictions
     global global_thresholds
+    global outlier_acclist,outlier_acclist12,outlier_acclist23,outlier_acclist13
 #     global global_a
     uce_expert1, bin_uncertainties_expert1, bin_errors_expert1, prop_in_bin_values_expert1,bin_n_samples_ep1,bin_variances_ep1 = val_uce_list_ep1[0],val_uce_list_ep1[1],val_uce_list_ep1[2],val_uce_list_ep1[3],val_uce_list_ep1[4],val_uce_list_ep1[5]
     uce_expert2, bin_uncertainties_expert2, bin_errors_expert2, prop_in_bin_values_expert2,bin_n_samples_ep2,bin_variances_ep2 = val_uce_list_ep2[0],val_uce_list_ep2[1],val_uce_list_ep2[2],val_uce_list_ep2[3],val_uce_list_ep2[4],val_uce_list_ep2[5]
@@ -838,8 +839,9 @@ def choose_best_three_expert_new(probs_expert1,probs_expert2,probs_expert3 ,targ
         
         ### 20240206 新增
 #         threshold_list= [0.001,0.005,0.008,0.009,0.01]
-        threshold_list= [0.001,0.005,0.01,0.05,0.1]
-        if phase == 'val':
+    threshold_list= [0.001,0.005,0.01,0.05,0.1]
+    if phase == 'val':
+        if outlier_acclist==[]:
             for i in threshold_list:
                 outlier_acc,_ = outlier_detection(error_rates,probs_expert1, probs_expert2, probs_expert3,targets,i)
                 outlier_acc_12,_ = outlier_detection_2_experts(torch.stack([error_rates_expert1, error_rates_expert2]), probs_expert1, probs_expert2, targets,'12',i)
@@ -850,21 +852,24 @@ def choose_best_three_expert_new(probs_expert1,probs_expert2,probs_expert3 ,targ
                 outlier_acclist23.append(outlier_acc_23)
                 outlier_acclist13.append(outlier_acc_13)
 
-        if phase == 'test':
-            test_outlier_acc = []
-            index_of_max = max(enumerate(outlier_acclist), key=lambda x: x[1])[0]
-            index_of_max12 = max(enumerate(outlier_acclist12), key=lambda x: x[1])[0]
-            index_of_max13 = max(enumerate(outlier_acclist13), key=lambda x: x[1])[0]
-            index_of_max23 = max(enumerate(outlier_acclist23), key=lambda x: x[1])[0]
-            outlier_acc_123,outlier_f1_123 = outlier_detection(error_rates,probs_expert1, probs_expert2,probs_expert3,targets,threshold_list[index_of_max])
-            outlier_acc_12,outlier_f1_12 = outlier_detection_2_experts(torch.stack([error_rates_expert1, error_rates_expert2]), probs_expert1, probs_expert2, targets,'12',threshold_list[index_of_max12])
-            outlier_acc_23,outlier_f1_23 = outlier_detection_2_experts(torch.stack([error_rates_expert2, error_rates_expert3]), probs_expert2, probs_expert3, targets,'23',threshold_list[index_of_max23])
-            outlier_acc_13,outlier_f1_13 = outlier_detection_2_experts(torch.stack([error_rates_expert1, error_rates_expert3]), probs_expert1, probs_expert3, targets,'13',threshold_list[index_of_max13])
-            
-            SPE_acc=[outlier_acc_123,outlier_f1_123, outlier_acc_12,outlier_f1_12,outlier_acc_23,outlier_f1_23,outlier_acc_13,outlier_f1_13]
+    if phase == 'test':
+        test_outlier_acc = []
+        index_of_max = max(enumerate(outlier_acclist), key=lambda x: x[1])[0]
+        index_of_max12 = max(enumerate(outlier_acclist12), key=lambda x: x[1])[0]
+        index_of_max13 = max(enumerate(outlier_acclist13), key=lambda x: x[1])[0]
+        index_of_max23 = max(enumerate(outlier_acclist23), key=lambda x: x[1])[0]
+        print(outlier_acclist,index_of_max)
+        outlier_acc_123,outlier_f1_123 = outlier_detection(error_rates,probs_expert1, probs_expert2,probs_expert3,targets,threshold_list[index_of_max])
+        outlier_acc_12,outlier_f1_12 = outlier_detection_2_experts(torch.stack([error_rates_expert1, error_rates_expert2]), probs_expert1, probs_expert2, targets,'12',threshold_list[index_of_max12])
+        outlier_acc_23,outlier_f1_23 = outlier_detection_2_experts(torch.stack([error_rates_expert2, error_rates_expert3]), probs_expert2, probs_expert3, targets,'23',threshold_list[index_of_max23])
+        outlier_acc_13,outlier_f1_13 = outlier_detection_2_experts(torch.stack([error_rates_expert1, error_rates_expert3]), probs_expert1, probs_expert3, targets,'13',threshold_list[index_of_max13])
+
+        SPE_acc__=[outlier_acc_123,outlier_f1_123, outlier_acc_12,outlier_f1_12,outlier_acc_23,outlier_f1_23,outlier_acc_13,outlier_f1_13]
+    else: 
+        SPE_acc__ =[0,0,0,0,0,0,0,0]
 
 
-    return SOE_final_predictions,ERV_SoP_acc,SPE_acc
+    return SOE_final_predictions,ERV_SoP_acc,SPE_acc__
 
 
 
@@ -1149,7 +1154,7 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
 #         import ipdb
 #         ipdb.set_trace()
         save_path____ = "./feat_seed1/"+str(config.seed)+'_'
-        save_tensors(test_dataset.phase , config.train_look_up_table , save_path____, S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
+        #save_tensors(test_dataset.phase , config.train_look_up_table , save_path____, S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
         
         uce_expert1, bin_uncertainties_expert1, bin_errors_expert1, prop_in_bin_values_expert1,bin_n_samples_ep1, bin_variances_ep1 = compute_uce(S_attr_exp1, all_attr_gt)
 
@@ -1176,7 +1181,7 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
         val_uce_list_ep3.append(bin_n_samples_ep3)
         val_uce_list_ep3.append(bin_variances_ep3)
         
-        MOM_probs,_ = choose_best_three_expert_new(S_attr_exp1,S_attr_exp2,S_attr_exp3,all_attr_gt,val_uce_list_ep1,val_uce_list_ep2,val_uce_list_ep3,test_dataset.phase)
+        MOM_probs,_,_ = choose_best_three_expert_new(S_attr_exp1,S_attr_exp2,S_attr_exp3,all_attr_gt,val_uce_list_ep1,val_uce_list_ep2,val_uce_list_ep3,test_dataset.phase)
         MOM_acc_val = accuracy(MOM_probs,all_attr_gt)
 
     if test_dataset.phase == "val" and use_fs:
@@ -1225,7 +1230,7 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
 #     import ipdb 
 #     ipdb.set_trace()
     save_path____ = "./feat_seed1/"+str(config.seed)+'_'
-    save_tensors(config.dataset + test_dataset.phase , yfs + config.train_look_up_table , save_path____, S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
+    #save_tensors(config.dataset + test_dataset.phase , yfs + config.train_look_up_table , save_path____, S_attr_exp1, S_attr_exp2, S_attr_exp3, all_attr_gt)
     #計算table準確度
     table_pred_ep12 = choose_best_expert_ex(S_attr_exp1, S_attr_exp2, all_attr_gt,test_dataset,val_uce_list_ep1,val_uce_list_ep2,weight_ep1,weight_ep2)
     table_acc_ep12 = accuracy(table_pred_ep12,all_attr_gt)
@@ -1240,9 +1245,9 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
     tabel_pred_ep123 = choose_best_three_expert(S_attr_exp1,S_attr_exp2,S_attr_exp3,pairs,all_attr_gt,all_pair_gt,test_dataset,val_uce_list_ep1,val_uce_list_ep2,val_uce_list_ep3,weight_ep1,weight_ep2,weight_ep3)
     tabel_acc_ep123 = accuracy(tabel_pred_ep123,all_attr_gt)
     
-    MOM_probs,ERV_SoP_acc,SPE_acc = choose_best_three_expert_new(S_attr_exp1,S_attr_exp2,S_attr_exp3,all_attr_gt,val_uce_list_ep1,val_uce_list_ep2,val_uce_list_ep3,test_dataset.phase)
-    
-    outlier_acc_123,outlier_f1_123, outlier_acc_12,outlier_f1_12,outlier_acc_23,outlier_f1_23,outlier_acc_13,outlier_f1_13 = SPE_acc[0],SPE_acc[1],SPE_acc[2],SPE_acc[3],SPE_acc[4],SPE_acc[5],SPE_acc[6],SPE_acc[7]
+    MOM_probs,ERV_SoP_acc,SPE_acc__ = choose_best_three_expert_new(S_attr_exp1,S_attr_exp2,S_attr_exp3,all_attr_gt,val_uce_list_ep1,val_uce_list_ep2,val_uce_list_ep3,test_dataset.phase)
+#     print(SPE_acc__)
+    outlier_acc_123,outlier_f1_123, outlier_acc_12,outlier_f1_12,outlier_acc_23,outlier_f1_23,outlier_acc_13,outlier_f1_13 = SPE_acc__[0],SPE_acc__[1],SPE_acc__[2],SPE_acc__[3],SPE_acc__[4],SPE_acc__[5],SPE_acc__[6],SPE_acc__[7]
 
     
     MOM_acc = accuracy(MOM_probs,all_attr_gt)
@@ -1414,7 +1419,7 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
         
 
         stats['MOM_acc'] = MOM_acc
-        stats['ERV_SoP_acc'] = ERV_SoP_acc
+#         stats['ERV_SoP_acc'] = ERV_SoP_acc
     
     stats['attr_acc_ep1_cor'] = expert1_acc
     stats['attr_acc_ep2_cor'] = expert2_acc    
@@ -1579,24 +1584,24 @@ def test(
     )
 
     #-----------------------------------------
-    if config.dataset =='mit-states':
-        all_logits_attr = torch.zeros(all_logits.size(0), len(test_dataset.attrs))
-        for i, (attr_idx, obj_idx) in enumerate(pairs):
-            all_logits_attr[:, attr_idx] += all_logits[:, i]
-        all_logits_attr /= len(test_dataset.objs)
+#     if config.dataset =='mit-states':
+#         all_logits_attr = torch.zeros(all_logits.size(0), len(test_dataset.attrs))
+#         for i, (attr_idx, obj_idx) in enumerate(pairs):
+#             all_logits_attr[:, attr_idx] += all_logits[:, i]
+#         all_logits_attr /= len(test_dataset.objs)
 
-        att_ped_org = torch.argmax(all_logits_attr,dim=1)
-        S_attr_exp1 = F.softmax(all_logits_attr, dim=1)
-    else:
+#         att_ped_org = torch.argmax(all_logits_attr,dim=1)
+#         S_attr_exp1 = F.softmax(all_logits_attr, dim=1)
+#     else:
         
-        all_logits_attr = torch.zeros(all_logits_.size(0), len(test_dataset.attrs))
-        for i, (attr_idx, obj_idx) in enumerate(pairs):
-            all_logits_attr[:, attr_idx] += all_logits_[:, i]
-        all_logits_attr /= len(test_dataset.objs)
+    all_logits_attr = torch.zeros(all_logits_.size(0), len(test_dataset.attrs))
+    for i, (attr_idx, obj_idx) in enumerate(pairs):
+        all_logits_attr[:, attr_idx] += all_logits_[:, i]
+    all_logits_attr /= len(test_dataset.objs)
 
-        att_ped_org = torch.argmax(all_logits_attr,dim=1)
-        S_attr_exp1 = F.softmax(all_logits_attr, dim=1)
-        #有使用ys
+    att_ped_org = torch.argmax(all_logits_attr,dim=1)
+    S_attr_exp1 = F.softmax(all_logits_attr, dim=1)
+    #有使用ys
 
 
 
