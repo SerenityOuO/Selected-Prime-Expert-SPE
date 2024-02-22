@@ -1393,9 +1393,9 @@ def cal_all_stats(S_attr_exp1,all_logits,all_logits_org,all_attr_gt,all_pair_gt,
         stats['FOR_expert2'+yfs] = FOR_expert2    
         stats['FOR_expert3'+yfs] = FOR_expert3
         
-        stats['attr_acc_f1_expert1'+yfs] = f1_expert1
-        stats['attr_acc_f1_expert2'+yfs] = f1_expert2    
-        stats['attr_acc_f1_expert3'+yfs] = f1_expert3
+#         stats['attr_acc_f1_expert1'+yfs] = f1_expert1
+#         stats['attr_acc_f1_expert2'+yfs] = f1_expert2    
+#         stats['attr_acc_f1_expert3'+yfs] = f1_expert3
         
         stats['attr_acc_POE_acc_123'+yfs] = POE_acc_123
         stats['attr_acc_POE_acc_12'+yfs] = POE_acc_12
@@ -2037,8 +2037,9 @@ if __name__ == "__main__":
                 all_logits, all_attr_gt, all_obj_gt, all_pair_gt,logits_attrs_list ,loss_avg = predict_logits(
                     model, val_dataset, config)
             
-            all_logits_org, _, _, _,_ ,_ = predict_logits(
-                model_org, val_dataset, config)  
+#             all_logits_org, _, _, _,_ ,_ = predict_logits(
+#                 model_org, val_dataset, config)  
+                all_logits_org = copy.deepcopy(all_logits)
             if config.open_world:
                 print('using threshold: ', best_th)
                 all_logits_ = threshold_with_feasibility(
@@ -2108,7 +2109,8 @@ if __name__ == "__main__":
             all_logits, all_attr_gt, all_obj_gt, all_pair_gt, logits_attrs_list,loss_avg = predict_logits(
                 model, test_dataset, config)
             
-        all_logits_org, _, _, _,_ ,_ = predict_logits(model_org, test_dataset, config)  
+#         all_logits_org, _, _, _,_ ,_ = predict_logits(model_org, test_dataset, config)  
+            all_logits_org = copy.deepcopy(all_logits)
         if config.open_world and best_th is not None:
             print('using threshold: ', best_th)
             all_logits_ = threshold_with_feasibility(
