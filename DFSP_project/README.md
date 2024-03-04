@@ -73,6 +73,9 @@ python -u feasibility.py --dataset mit-states
 The feasibility similarities are saved at `data/feasibility_<dataset>.pt`.
 To run, just edit the open-world parameter in `config/<dataset>.yml`
 
+### model 
+
+https://huggingface.co/SerenityYuki/CZSL/tree/main
 
 ### SPE and HMOE 
 ```
